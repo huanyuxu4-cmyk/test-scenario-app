@@ -4,6 +4,8 @@ import Dashboard from './pages/Dashboard'
 import ScenarioList from './pages/ScenarioList'
 import ScenarioForm from './pages/ScenarioForm'
 import ScenarioDetail from './pages/ScenarioDetail'
+import ExecutionForm from './pages/ExecutionForm'
+import ExecutionDetail from './pages/ExecutionDetail'
 import Settings from './pages/Settings'
 
 function Nav() {
@@ -50,6 +52,9 @@ export default function App() {
             <Route path="/scenario/new" element={<ScenarioForm />} />
             <Route path="/scenario/:id" element={<ScenarioDetail />} />
             <Route path="/scenario/:id/edit" element={<ScenarioForm />} />
+            <Route path="/scenario/:scenarioId/execute" element={<ExecutionForm />} />
+            <Route path="/execution/:id" element={<ExecutionDetail />} />
+            <Route path="/execution/:id/edit" element={<ExecutionForm />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>

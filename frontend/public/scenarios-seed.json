@@ -1,0 +1,126 @@
+{
+  "version": 2,
+  "exportedAt": "2025-03-09T00:00:00.000Z",
+  "test_scenarios": [
+    {
+      "id": "pt-001-traffic-signs",
+      "name": "车内交通标识标牌展示",
+      "category": "public_transit",
+      "plannedDate": "2025-03-15",
+      "memo": "云平台下发道路数据及交通标牌信息给车端。验证标牌类型：过水路面、禁止机动车驶入、单行路（直行）、允许掉头、此路不通、禁止向右转弯、区域禁止长时停车、禁止向左转弯、限制轴重、限制速度。检查车端是否正确解析并展示。"
+    },
+    {
+      "id": "pt-002-traffic-info",
+      "name": "交通信息下发",
+      "category": "public_transit",
+      "plannedDate": "2025-03-15",
+      "memo": "车辆行驶过程中实时接收道路实时交通感知信息（如施工）。验证施工信息下发时效性、展示完整性及对行驶路线的提示准确性。"
+    },
+    {
+      "id": "pt-003-parking-charging",
+      "name": "停车场/充电桩信息下发",
+      "category": "public_transit",
+      "plannedDate": "2025-03-15",
+      "memo": "向行驶中的车辆推送周边停车场和充电桩信息。验证信息推送触发距离、停车场/充电桩位置、剩余泊位或空闲桩数量、导航跳转是否正确。"
+    },
+    {
+      "id": "pt-004-bus-stop",
+      "name": "公交站点信息展示与到站提示",
+      "category": "public_transit",
+      "plannedDate": "2025-03-16",
+      "memo": "面向公交车提供站点信息：距离站点距离、剩余抵达时间；即将进入站台时进行到站提示。验证距离/时间计算准确性、提示触发时机、语音/画面提示完整性。"
+    },
+    {
+      "id": "pt-005-bus-lane",
+      "name": "公交车道禁止行驶时段提醒",
+      "category": "public_transit",
+      "plannedDate": "2025-03-16",
+      "memo": "车辆驶入公交专用车道且在禁止行驶时间段内时，对司机进行驶出提示。验证时段判断、驶入/驶出检测、提醒及时性及语音/画面提示效果。"
+    },
+    {
+      "id": "pt-006-road-hazard",
+      "name": "道路危险状况提醒",
+      "category": "public_transit",
+      "plannedDate": "2025-03-17",
+      "memo": "云端通过路侧传感器获取道路危险状况（路面深坑、抛洒物、路面积水等），并发送给智能网联车辆。验证消息下发延迟、危险类型识别、位置精度及提醒强度。"
+    },
+    {
+      "id": "dt-001-red-light-warn",
+      "name": "闯红灯预警",
+      "category": "dynamic_traffic",
+      "plannedDate": "2025-03-18",
+      "memo": "车辆经过有信号控制路口，存在不按信号灯规定的行驶风险时对驾驶员预警。验证预警触发条件（速度、距离、信号相位）、预警时机、误报/漏报率。"
+    },
+    {
+      "id": "dt-002-traffic-light-on-car",
+      "name": "红绿灯上车",
+      "category": "dynamic_traffic",
+      "plannedDate": "2025-03-18",
+      "memo": "前车遮挡导致无法准确获取信号灯时，云端下发信号灯状态、相位、持续时间、倒计时及车道对应变绿信息。验证下发时效性、信息完整性、车端展示与决策正确性。"
+    },
+    {
+      "id": "dt-003-congestion",
+      "name": "前方拥堵提醒",
+      "category": "dynamic_traffic",
+      "plannedDate": "2025-03-19",
+      "memo": "道路上发生交通拥堵时对驾驶员提醒。验证拥堵识别、推送距离、拥堵等级、替代路线建议（如有）。"
+    },
+    {
+      "id": "dt-004-reversible-lane",
+      "name": "可变车道提示",
+      "category": "dynamic_traffic",
+      "plannedDate": "2025-03-19",
+      "memo": "道路上存在可变车道时，向车辆下发实时可变车道指示。验证指示与路侧实际一致、更新延迟、车端展示清晰度。"
+    },
+    {
+      "id": "dt-005-geofence",
+      "name": "电子围栏突破预警",
+      "category": "dynamic_traffic",
+      "plannedDate": "2025-03-20",
+      "memo": "平台人工配置电子围栏后，车辆违规驶入/驶出时对驾驶员提醒。验证围栏配置、驶入/驶出判断、提醒触发及类型区分。"
+    },
+    {
+      "id": "pa-001-vru-warn",
+      "name": "弱势交通参与者碰撞预警",
+      "category": "perception_assist",
+      "plannedDate": "2025-03-21",
+      "memo": "与行人、自行车、电动自行车等存在碰撞风险时预警。验证目标检测、碰撞风险计算、预警时机、不同弱势参与者类型识别。"
+    },
+    {
+      "id": "pa-002-intersection-collision",
+      "name": "交叉路口碰撞预警",
+      "category": "perception_assist",
+      "plannedDate": "2025-03-21",
+      "memo": "车辆驶向交叉路口与侧向车辆存在碰撞危险时预警。验证侧向来车检测、TTC计算、预警等级、误报控制。"
+    },
+    {
+      "id": "pa-003-overtake-warn",
+      "name": "逆向超车预警",
+      "category": "perception_assist",
+      "plannedDate": "2025-03-22",
+      "memo": "借用逆向车道超车时，若逆向车道有来车与本车存在碰撞风险则预警。验证逆向车道车辆检测、超车意图判断、预警时机。"
+    },
+    {
+      "id": "pa-004-accident-remind",
+      "name": "交通事故提醒",
+      "category": "perception_assist",
+      "plannedDate": "2025-03-22",
+      "memo": "云端通过路侧传感器获取交通事故，向经过该路段车辆发送减速通行提醒。验证事件上报、下发范围、提醒内容、引导绕行（如有）。"
+    },
+    {
+      "id": "pa-005-rear-vehicle",
+      "name": "后方快速车辆逼近提醒",
+      "category": "perception_assist",
+      "plannedDate": "2025-03-23",
+      "memo": "后方有车辆快速逼近时对驾驶员提醒。验证后方车辆检测、速度差计算、逼近判定、提醒时机。"
+    },
+    {
+      "id": "pa-006-parked-vehicle",
+      "name": "常停车辆提醒",
+      "category": "perception_assist",
+      "plannedDate": "2025-03-23",
+      "memo": "将道路上静止车辆按不同停止时间区分并提醒。验证停止时间判断（短停/长停）、区分展示、对驾驶员决策的辅助效果。"
+    }
+  ],
+  "test_executions": []
+}

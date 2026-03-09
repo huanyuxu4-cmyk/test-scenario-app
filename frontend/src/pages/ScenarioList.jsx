@@ -52,11 +52,11 @@ export default function ScenarioList() {
             <Link to={`/scenario/${s.id}`} style={styles.link}>
               <div style={styles.name}>{s.name}</div>
               <div style={styles.meta}>
-                {s.triggerDate} {s.triggerTime ? ` ${s.triggerTime}` : ''}
-                {s.location && ` · ${s.location}`}
+                计划日期：{s.plannedDate || s.triggerDate || '-'}
                 {s.category && ` · ${getCategoryLabel(s.category)}`}
               </div>
             </Link>
+            <Link to={`/scenario/${s.id}/execute`} style={styles.execBtn}>执行</Link>
             <Link to={`/scenario/${s.id}/edit`} style={styles.editBtn}>编辑</Link>
             <button
               type="button"
@@ -88,6 +88,7 @@ const styles = {
     boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
   },
   link: { flex: 1 },
+  execBtn: { padding: '8px 12px', fontSize: 13, color: '#16a34a', textDecoration: 'underline' },
   editBtn: { padding: '8px 12px', fontSize: 13, color: '#2563eb', textDecoration: 'underline' },
   name: { fontWeight: 600, marginBottom: 4 },
   meta: { fontSize: 13, color: '#666' },

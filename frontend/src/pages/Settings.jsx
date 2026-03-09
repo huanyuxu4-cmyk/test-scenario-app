@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { exportData, importData, getScenarios } from '../utils/storage'
+import { exportData, importData, getScenarios, getExecutions } from '../utils/storage'
 
 export default function Settings() {
   const [importResult, setImportResult] = useState(null)
@@ -52,6 +52,25 @@ export default function Settings() {
     e.target.value = ''
   }
 
+  const [seedLoading, setSeedLoading] = useState(false)
+  const handleLoadSeed = async () => {
+    setSeedLoading(true)
+    setImportResult(null)
+    try {
+      const base = import.meta.env.BASE_URL || './'
+      const res = await fetch(`${base}scenarios-seed.json`)
+      if (!res.ok) throw new Error('无法加载预设文件')
+      const json = await res.text()
+      const result = importData(json, 'merge')
+      setImportResult(result.ok ? { ok: true } : { ok: false, error: result.error })
+      if (result.ok) window.location.reload()
+    } catch (err) {
+      setImportResult({ ok: false, error: err.message })
+    } finally {
+      setSeedLoading(false)
+    }
+  }
+
   const count = getScenarios().length
 
   return (
@@ -60,13 +79,21 @@ export default function Settings() {
 
       <div style={styles.card}>
         <div style={styles.label}>数据统计</div>
-        <p>当前共 {count} 个测试场景</p>
+        <p>当前共 {count} 个场景设定，{getExecutions().length} 条执行记录</p>
       </div>
 
       <div style={styles.card}>
         <div style={styles.label}>导出数据</div>
         <p style={styles.hint}>将全部场景导出为 JSON 文件备份</p>
         <button type="button" onClick={handleExport} style={styles.btn}>导出</button>
+      </div>
+
+      <div style={styles.card}>
+        <div style={styles.label}>预设场景</div>
+        <p style={styles.hint}>一键导入 17 个场景设定（公共交通、动态交通、感知辅助）。执行记录需在测试时手动添加。</p>
+        <button type="button" onClick={handleLoadSeed} disabled={seedLoading} style={styles.btn}>
+          {seedLoading ? '加载中…' : '导入预设场景'}
+        </button>
       </div>
 
       <div style={styles.card}>
